@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MANIFEST=git://github.com/StatiXOS/android_manifest.git
+MANIFEST=git://github.com/ProjectSakura/android.git
 BRANCH=11
 
 mkdir -p /tmp/rom
@@ -8,12 +8,11 @@ cd /tmp/rom
 
 # Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice. Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
 repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b "$BRANCH" -g default,-device,-mips,-darwin,-notdefault
-git config --global user.name ItsVixano
-git config --global user.email vixanonew@gmail.com
+git config --global user.name CyberJalagam
+git config --global user.email jaishnavprasad@disroot.org
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
-git clone https://github.com/henloscape/device_xiaomi_lava -b 11 device/xiaomi/lava 
-git clone https://github.com/Redmi-MT6768/android_vendor_xiaomi_lava vendor/xiaomi/lava 
-bash device/xiaomi/lava/vendorsetup.sh 
+git clone https://github.com/CPH1859/android_device_oppo_CPH1859 -b eleven-ims device/oppo/CPH1859 
+git clone https://github.com/CPH1859/proprietary_vendor_oppo_CPH1859 -b eleven-ims vendor/oppo/CPH1859
